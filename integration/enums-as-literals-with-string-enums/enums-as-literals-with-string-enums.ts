@@ -1,19 +1,18 @@
 /* eslint-disable */
-import { util, configure, Writer, Reader } from 'protobufjs/minimal';
-import * as Long from 'long';
+import * as _m0 from "protobufjs/minimal";
 
-export const protobufPackage = '';
+export const protobufPackage = "";
 
 export interface DividerData {
   type: DividerData_DividerType;
 }
 
 export const DividerData_DividerType = {
-  DOUBLE: 'DOUBLE',
-  SINGLE: 'SINGLE',
-  DASHED: 'DASHED',
-  DOTTED: 'DOTTED',
-  UNRECOGNIZED: 'UNRECOGNIZED',
+  DOUBLE: "DOUBLE",
+  SINGLE: "SINGLE",
+  DASHED: "DASHED",
+  DOTTED: "DOTTED",
+  UNRECOGNIZED: "UNRECOGNIZED",
 } as const;
 
 export type DividerData_DividerType = typeof DividerData_DividerType[keyof typeof DividerData_DividerType];
@@ -21,19 +20,19 @@ export type DividerData_DividerType = typeof DividerData_DividerType[keyof typeo
 export function dividerData_DividerTypeFromJSON(object: any): DividerData_DividerType {
   switch (object) {
     case 0:
-    case 'DOUBLE':
+    case "DOUBLE":
       return DividerData_DividerType.DOUBLE;
     case 1:
-    case 'SINGLE':
+    case "SINGLE":
       return DividerData_DividerType.SINGLE;
     case 2:
-    case 'DASHED':
+    case "DASHED":
       return DividerData_DividerType.DASHED;
     case 3:
-    case 'DOTTED':
+    case "DOTTED":
       return DividerData_DividerType.DOTTED;
     case -1:
-    case 'UNRECOGNIZED':
+    case "UNRECOGNIZED":
     default:
       return DividerData_DividerType.UNRECOGNIZED;
   }
@@ -42,15 +41,16 @@ export function dividerData_DividerTypeFromJSON(object: any): DividerData_Divide
 export function dividerData_DividerTypeToJSON(object: DividerData_DividerType): string {
   switch (object) {
     case DividerData_DividerType.DOUBLE:
-      return 'DOUBLE';
+      return "DOUBLE";
     case DividerData_DividerType.SINGLE:
-      return 'SINGLE';
+      return "SINGLE";
     case DividerData_DividerType.DASHED:
-      return 'DASHED';
+      return "DASHED";
     case DividerData_DividerType.DOTTED:
-      return 'DOTTED';
+      return "DOTTED";
+    case DividerData_DividerType.UNRECOGNIZED:
     default:
-      return 'UNKNOWN';
+      return "UNRECOGNIZED";
   }
 }
 
@@ -64,8 +64,9 @@ export function dividerData_DividerTypeToNumber(object: DividerData_DividerType)
       return 2;
     case DividerData_DividerType.DOTTED:
       return 3;
+    case DividerData_DividerType.UNRECOGNIZED:
     default:
-      return 0;
+      return -1;
   }
 }
 
@@ -74,15 +75,15 @@ function createBaseDividerData(): DividerData {
 }
 
 export const DividerData = {
-  encode(message: DividerData, writer: Writer = Writer.create()): Writer {
+  encode(message: DividerData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.type !== DividerData_DividerType.DOUBLE) {
       writer.uint32(8).int32(dividerData_DividerTypeToNumber(message.type));
     }
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): DividerData {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): DividerData {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseDividerData();
     while (reader.pos < end) {
@@ -100,9 +101,7 @@ export const DividerData = {
   },
 
   fromJSON(object: any): DividerData {
-    return {
-      type: isSet(object.type) ? dividerData_DividerTypeFromJSON(object.type) : DividerData_DividerType.DOUBLE,
-    };
+    return { type: isSet(object.type) ? dividerData_DividerTypeFromJSON(object.type) : DividerData_DividerType.DOUBLE };
   },
 
   toJSON(message: DividerData): unknown {
@@ -120,27 +119,14 @@ export const DividerData = {
 
 type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
-export type DeepPartial<T> = T extends Builtin
-  ? T
-  : T extends Array<infer U>
-  ? Array<DeepPartial<U>>
-  : T extends ReadonlyArray<infer U>
-  ? ReadonlyArray<DeepPartial<U>>
-  : T extends {}
-  ? { [K in keyof T]?: DeepPartial<T[K]> }
+export type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
 
 type KeysOfUnion<T> = T extends T ? keyof T : never;
-export type Exact<P, I extends P> = P extends Builtin
-  ? P
-  : P & { [K in keyof P]: Exact<P[K], I[K]> } & Record<Exclude<keyof I, KeysOfUnion<P>>, never>;
-
-// If you get a compile-error about 'Constructor<Long> and ... have no overlap',
-// add '--ts_proto_opt=esModuleInterop=true' as a flag when calling 'protoc'.
-if (util.Long !== Long) {
-  util.Long = Long as any;
-  configure();
-}
+export type Exact<P, I extends P> = P extends Builtin ? P
+  : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P>>]: never };
 
 function isSet(value: any): boolean {
   return value !== null && value !== undefined;

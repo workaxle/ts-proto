@@ -1,8 +1,7 @@
 /* eslint-disable */
-import { util, configure, Writer, Reader } from 'protobufjs/minimal';
-import * as Long from 'long';
+import * as _m0 from "protobufjs/minimal";
 
-export const protobufPackage = '';
+export const protobufPackage = "";
 
 export enum MyEnum {
   FOO = 0,
@@ -14,19 +13,21 @@ export interface MyMessage {
   foo?: number | undefined;
   foo2?: number | undefined;
   bar?: string | undefined;
-  quux: string | undefined;
+  quux?: string | undefined;
 }
 
-export interface RequestType {}
+export interface RequestType {
+}
 
-export interface ResponseType {}
+export interface ResponseType {
+}
 
 function createBaseMyMessage(): MyMessage {
   return { foo: undefined, foo2: undefined, bar: undefined, quux: undefined };
 }
 
 export const MyMessage = {
-  encode(message: MyMessage, writer: Writer = Writer.create()): Writer {
+  encode(message: MyMessage, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.foo !== undefined) {
       writer.uint32(8).int32(message.foo);
     }
@@ -39,15 +40,16 @@ export const MyMessage = {
     if (message.quux !== undefined) {
       writer.uint32(34).string(message.quux);
     }
-    if ('_unknownFields' in message) {
-      for (const key of Object.keys(message['_unknownFields'])) {
-        const values = message['_unknownFields'][key] as Uint8Array[];
+    if ("_unknownFields" in message) {
+      const msgUnknownFields: any = (message as any)["_unknownFields"];
+      for (const key of Object.keys(msgUnknownFields)) {
+        const values = msgUnknownFields[key] as Uint8Array[];
         for (const value of values) {
           writer.uint32(parseInt(key, 10));
-          (writer as any)['_push'](
+          (writer as any)["_push"](
             (val: Uint8Array, buf: Buffer, pos: number) => buf.set(val, pos),
             value.length,
-            value
+            value,
           );
         }
       }
@@ -55,8 +57,8 @@ export const MyMessage = {
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): MyMessage {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): MyMessage {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMyMessage();
     (message as any)._unknownFields = {};
@@ -94,16 +96,17 @@ function createBaseRequestType(): RequestType {
 }
 
 export const RequestType = {
-  encode(message: RequestType, writer: Writer = Writer.create()): Writer {
-    if ('_unknownFields' in message) {
-      for (const key of Object.keys(message['_unknownFields'])) {
-        const values = message['_unknownFields'][key] as Uint8Array[];
+  encode(message: RequestType, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if ("_unknownFields" in message) {
+      const msgUnknownFields: any = (message as any)["_unknownFields"];
+      for (const key of Object.keys(msgUnknownFields)) {
+        const values = msgUnknownFields[key] as Uint8Array[];
         for (const value of values) {
           writer.uint32(parseInt(key, 10));
-          (writer as any)['_push'](
+          (writer as any)["_push"](
             (val: Uint8Array, buf: Buffer, pos: number) => buf.set(val, pos),
             value.length,
-            value
+            value,
           );
         }
       }
@@ -111,8 +114,8 @@ export const RequestType = {
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): RequestType {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): RequestType {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseRequestType();
     (message as any)._unknownFields = {};
@@ -138,16 +141,17 @@ function createBaseResponseType(): ResponseType {
 }
 
 export const ResponseType = {
-  encode(message: ResponseType, writer: Writer = Writer.create()): Writer {
-    if ('_unknownFields' in message) {
-      for (const key of Object.keys(message['_unknownFields'])) {
-        const values = message['_unknownFields'][key] as Uint8Array[];
+  encode(message: ResponseType, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if ("_unknownFields" in message) {
+      const msgUnknownFields: any = (message as any)["_unknownFields"];
+      for (const key of Object.keys(msgUnknownFields)) {
+        const values = msgUnknownFields[key] as Uint8Array[];
         for (const value of values) {
           writer.uint32(parseInt(key, 10));
-          (writer as any)['_push'](
+          (writer as any)["_push"](
             (val: Uint8Array, buf: Buffer, pos: number) => buf.set(val, pos),
             value.length,
-            value
+            value,
           );
         }
       }
@@ -155,8 +159,8 @@ export const ResponseType = {
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): ResponseType {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): ResponseType {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseResponseType();
     (message as any)._unknownFields = {};
@@ -183,24 +187,19 @@ export interface MyService {
 
 export class MyServiceClientImpl implements MyService {
   private readonly rpc: Rpc;
-  constructor(rpc: Rpc) {
+  private readonly service: string;
+  constructor(rpc: Rpc, opts?: { service?: string }) {
+    this.service = opts?.service || "MyService";
     this.rpc = rpc;
     this.MyMethod = this.MyMethod.bind(this);
   }
   MyMethod(request: RequestType): Promise<ResponseType> {
     const data = RequestType.encode(request).finish();
-    const promise = this.rpc.request('MyService', 'MyMethod', data);
-    return promise.then((data) => ResponseType.decode(new Reader(data)));
+    const promise = this.rpc.request(this.service, "MyMethod", data);
+    return promise.then((data) => ResponseType.decode(new _m0.Reader(data)));
   }
 }
 
 interface Rpc {
   request(service: string, method: string, data: Uint8Array): Promise<Uint8Array>;
-}
-
-// If you get a compile-error about 'Constructor<Long> and ... have no overlap',
-// add '--ts_proto_opt=esModuleInterop=true' as a flag when calling 'protoc'.
-if (util.Long !== Long) {
-  util.Long = Long as any;
-  configure();
 }

@@ -1,13 +1,13 @@
 /* eslint-disable */
-import { FileDescriptorProto } from 'ts-proto-descriptors';
-import { util, configure, Writer, Reader } from 'protobufjs/minimal';
-import * as Long from 'long';
-import { protoMetadata as protoMetadata1, DateMessage } from './google/type/date';
-import { protoMetadata as protoMetadata2, StringValue, Int32Value, BoolValue } from './google/protobuf/wrappers';
-import { protoMetadata as protoMetadata3, Timestamp } from './google/protobuf/timestamp';
-import { protoMetadata as protoMetadata4, ImportedThing } from './import_dir/thing';
+import * as Long from "long";
+import * as _m0 from "protobufjs/minimal";
+import { FileDescriptorProto } from "ts-proto-descriptors";
+import { protoMetadata as protoMetadata3, Timestamp } from "./google/protobuf/timestamp";
+import { BoolValue, Int32Value, protoMetadata as protoMetadata2, StringValue } from "./google/protobuf/wrappers";
+import { DateMessage, protoMetadata as protoMetadata1 } from "./google/type/date";
+import { ImportedThing, protoMetadata as protoMetadata4 } from "./import_dir/thing";
 
-export const protobufPackage = 'simple';
+export const protobufPackage = "simple";
 
 /**
  * Adding a comment to the syntax will become the first
@@ -78,8 +78,8 @@ export interface Nested_InnerMessage_DeepMessage {
 }
 
 export interface OneOfMessage {
-  first: string | undefined;
-  last: string | undefined;
+  first?: string | undefined;
+  last?: string | undefined;
 }
 
 export interface SimpleWithWrappers {
@@ -171,23 +171,30 @@ export interface Numbers {
 /** For testing proto3's field presence feature. */
 export interface SimpleButOptional {
   /** Name field */
-  name?: string | undefined;
+  name?:
+    | string
+    | undefined;
   /** Age */
-  age?: number | undefined;
+  age?:
+    | number
+    | undefined;
   /** This comment will also attach */
   createdAt?: Date | undefined;
   child?: Child | undefined;
-  state?: StateEnum | undefined;
+  state?:
+    | StateEnum
+    | undefined;
   /** A thing (imported from thing) */
   thing?: ImportedThing | undefined;
   birthday?: DateMessage | undefined;
 }
 
-export interface Empty {}
+export interface Empty {
+}
 
 function createBaseSimple(): Simple {
   return {
-    name: '',
+    name: "",
     age: 0,
     createdAt: undefined,
     child: undefined,
@@ -204,8 +211,8 @@ function createBaseSimple(): Simple {
 }
 
 export const Simple = {
-  encode(message: Simple, writer: Writer = Writer.create()): Writer {
-    if (message.name !== '') {
+  encode(message: Simple, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
     if (message.age !== 0) {
@@ -251,8 +258,8 @@ export const Simple = {
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): Simple {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): Simple {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSimple();
     while (reader.pos < end) {
@@ -321,12 +328,12 @@ export const Simple = {
 };
 
 function createBaseChild(): Child {
-  return { name: '', type: 0 };
+  return { name: "", type: 0 };
 }
 
 export const Child = {
-  encode(message: Child, writer: Writer = Writer.create()): Writer {
-    if (message.name !== '') {
+  encode(message: Child, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
     if (message.type !== 0) {
@@ -335,8 +342,8 @@ export const Child = {
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): Child {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): Child {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseChild();
     while (reader.pos < end) {
@@ -358,12 +365,12 @@ export const Child = {
 };
 
 function createBaseNested(): Nested {
-  return { name: '', message: undefined, state: 0 };
+  return { name: "", message: undefined, state: 0 };
 }
 
 export const Nested = {
-  encode(message: Nested, writer: Writer = Writer.create()): Writer {
-    if (message.name !== '') {
+  encode(message: Nested, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
     if (message.message !== undefined) {
@@ -375,8 +382,8 @@ export const Nested = {
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): Nested {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): Nested {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseNested();
     while (reader.pos < end) {
@@ -401,12 +408,12 @@ export const Nested = {
 };
 
 function createBaseNested_InnerMessage(): Nested_InnerMessage {
-  return { name: '', deep: undefined };
+  return { name: "", deep: undefined };
 }
 
 export const Nested_InnerMessage = {
-  encode(message: Nested_InnerMessage, writer: Writer = Writer.create()): Writer {
-    if (message.name !== '') {
+  encode(message: Nested_InnerMessage, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
     if (message.deep !== undefined) {
@@ -415,8 +422,8 @@ export const Nested_InnerMessage = {
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): Nested_InnerMessage {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): Nested_InnerMessage {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseNested_InnerMessage();
     while (reader.pos < end) {
@@ -438,19 +445,19 @@ export const Nested_InnerMessage = {
 };
 
 function createBaseNested_InnerMessage_DeepMessage(): Nested_InnerMessage_DeepMessage {
-  return { name: '' };
+  return { name: "" };
 }
 
 export const Nested_InnerMessage_DeepMessage = {
-  encode(message: Nested_InnerMessage_DeepMessage, writer: Writer = Writer.create()): Writer {
-    if (message.name !== '') {
+  encode(message: Nested_InnerMessage_DeepMessage, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): Nested_InnerMessage_DeepMessage {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): Nested_InnerMessage_DeepMessage {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseNested_InnerMessage_DeepMessage();
     while (reader.pos < end) {
@@ -473,7 +480,7 @@ function createBaseOneOfMessage(): OneOfMessage {
 }
 
 export const OneOfMessage = {
-  encode(message: OneOfMessage, writer: Writer = Writer.create()): Writer {
+  encode(message: OneOfMessage, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.first !== undefined) {
       writer.uint32(10).string(message.first);
     }
@@ -483,8 +490,8 @@ export const OneOfMessage = {
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): OneOfMessage {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): OneOfMessage {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseOneOfMessage();
     while (reader.pos < end) {
@@ -510,7 +517,7 @@ function createBaseSimpleWithWrappers(): SimpleWithWrappers {
 }
 
 export const SimpleWithWrappers = {
-  encode(message: SimpleWithWrappers, writer: Writer = Writer.create()): Writer {
+  encode(message: SimpleWithWrappers, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.name !== undefined) {
       StringValue.encode({ value: message.name! }, writer.uint32(10).fork()).ldelim();
     }
@@ -529,8 +536,8 @@ export const SimpleWithWrappers = {
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): SimpleWithWrappers {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): SimpleWithWrappers {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSimpleWithWrappers();
     while (reader.pos < end) {
@@ -565,15 +572,15 @@ function createBaseEntity(): Entity {
 }
 
 export const Entity = {
-  encode(message: Entity, writer: Writer = Writer.create()): Writer {
+  encode(message: Entity, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.id !== 0) {
       writer.uint32(8).int32(message.id);
     }
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): Entity {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): Entity {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseEntity();
     while (reader.pos < end) {
@@ -596,7 +603,7 @@ function createBaseSimpleWithMap(): SimpleWithMap {
 }
 
 export const SimpleWithMap = {
-  encode(message: SimpleWithMap, writer: Writer = Writer.create()): Writer {
+  encode(message: SimpleWithMap, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     Object.entries(message.entitiesById).forEach(([key, value]) => {
       SimpleWithMap_EntitiesByIdEntry.encode({ key: key as any, value }, writer.uint32(10).fork()).ldelim();
     });
@@ -615,8 +622,8 @@ export const SimpleWithMap = {
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): SimpleWithMap {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): SimpleWithMap {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSimpleWithMap();
     while (reader.pos < end) {
@@ -666,7 +673,7 @@ function createBaseSimpleWithMap_EntitiesByIdEntry(): SimpleWithMap_EntitiesById
 }
 
 export const SimpleWithMap_EntitiesByIdEntry = {
-  encode(message: SimpleWithMap_EntitiesByIdEntry, writer: Writer = Writer.create()): Writer {
+  encode(message: SimpleWithMap_EntitiesByIdEntry, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.key !== 0) {
       writer.uint32(8).int32(message.key);
     }
@@ -676,8 +683,8 @@ export const SimpleWithMap_EntitiesByIdEntry = {
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): SimpleWithMap_EntitiesByIdEntry {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): SimpleWithMap_EntitiesByIdEntry {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSimpleWithMap_EntitiesByIdEntry();
     while (reader.pos < end) {
@@ -699,22 +706,22 @@ export const SimpleWithMap_EntitiesByIdEntry = {
 };
 
 function createBaseSimpleWithMap_NameLookupEntry(): SimpleWithMap_NameLookupEntry {
-  return { key: '', value: '' };
+  return { key: "", value: "" };
 }
 
 export const SimpleWithMap_NameLookupEntry = {
-  encode(message: SimpleWithMap_NameLookupEntry, writer: Writer = Writer.create()): Writer {
-    if (message.key !== '') {
+  encode(message: SimpleWithMap_NameLookupEntry, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.key !== "") {
       writer.uint32(10).string(message.key);
     }
-    if (message.value !== '') {
+    if (message.value !== "") {
       writer.uint32(18).string(message.value);
     }
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): SimpleWithMap_NameLookupEntry {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): SimpleWithMap_NameLookupEntry {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSimpleWithMap_NameLookupEntry();
     while (reader.pos < end) {
@@ -740,7 +747,7 @@ function createBaseSimpleWithMap_IntLookupEntry(): SimpleWithMap_IntLookupEntry 
 }
 
 export const SimpleWithMap_IntLookupEntry = {
-  encode(message: SimpleWithMap_IntLookupEntry, writer: Writer = Writer.create()): Writer {
+  encode(message: SimpleWithMap_IntLookupEntry, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.key !== 0) {
       writer.uint32(8).int32(message.key);
     }
@@ -750,8 +757,8 @@ export const SimpleWithMap_IntLookupEntry = {
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): SimpleWithMap_IntLookupEntry {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): SimpleWithMap_IntLookupEntry {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSimpleWithMap_IntLookupEntry();
     while (reader.pos < end) {
@@ -773,12 +780,12 @@ export const SimpleWithMap_IntLookupEntry = {
 };
 
 function createBaseSimpleWithMap_MapOfTimestampsEntry(): SimpleWithMap_MapOfTimestampsEntry {
-  return { key: '', value: undefined };
+  return { key: "", value: undefined };
 }
 
 export const SimpleWithMap_MapOfTimestampsEntry = {
-  encode(message: SimpleWithMap_MapOfTimestampsEntry, writer: Writer = Writer.create()): Writer {
-    if (message.key !== '') {
+  encode(message: SimpleWithMap_MapOfTimestampsEntry, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.key !== "") {
       writer.uint32(10).string(message.key);
     }
     if (message.value !== undefined) {
@@ -787,8 +794,8 @@ export const SimpleWithMap_MapOfTimestampsEntry = {
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): SimpleWithMap_MapOfTimestampsEntry {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): SimpleWithMap_MapOfTimestampsEntry {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSimpleWithMap_MapOfTimestampsEntry();
     while (reader.pos < end) {
@@ -810,12 +817,12 @@ export const SimpleWithMap_MapOfTimestampsEntry = {
 };
 
 function createBaseSimpleWithMap_MapOfBytesEntry(): SimpleWithMap_MapOfBytesEntry {
-  return { key: '', value: new Uint8Array() };
+  return { key: "", value: new Uint8Array() };
 }
 
 export const SimpleWithMap_MapOfBytesEntry = {
-  encode(message: SimpleWithMap_MapOfBytesEntry, writer: Writer = Writer.create()): Writer {
-    if (message.key !== '') {
+  encode(message: SimpleWithMap_MapOfBytesEntry, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.key !== "") {
       writer.uint32(10).string(message.key);
     }
     if (message.value.length !== 0) {
@@ -824,8 +831,8 @@ export const SimpleWithMap_MapOfBytesEntry = {
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): SimpleWithMap_MapOfBytesEntry {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): SimpleWithMap_MapOfBytesEntry {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSimpleWithMap_MapOfBytesEntry();
     while (reader.pos < end) {
@@ -851,15 +858,15 @@ function createBaseSimpleWithSnakeCaseMap(): SimpleWithSnakeCaseMap {
 }
 
 export const SimpleWithSnakeCaseMap = {
-  encode(message: SimpleWithSnakeCaseMap, writer: Writer = Writer.create()): Writer {
+  encode(message: SimpleWithSnakeCaseMap, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     Object.entries(message.entitiesById).forEach(([key, value]) => {
       SimpleWithSnakeCaseMap_EntitiesByIdEntry.encode({ key: key as any, value }, writer.uint32(10).fork()).ldelim();
     });
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): SimpleWithSnakeCaseMap {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): SimpleWithSnakeCaseMap {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSimpleWithSnakeCaseMap();
     while (reader.pos < end) {
@@ -885,7 +892,7 @@ function createBaseSimpleWithSnakeCaseMap_EntitiesByIdEntry(): SimpleWithSnakeCa
 }
 
 export const SimpleWithSnakeCaseMap_EntitiesByIdEntry = {
-  encode(message: SimpleWithSnakeCaseMap_EntitiesByIdEntry, writer: Writer = Writer.create()): Writer {
+  encode(message: SimpleWithSnakeCaseMap_EntitiesByIdEntry, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.key !== 0) {
       writer.uint32(8).int32(message.key);
     }
@@ -895,8 +902,8 @@ export const SimpleWithSnakeCaseMap_EntitiesByIdEntry = {
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): SimpleWithSnakeCaseMap_EntitiesByIdEntry {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): SimpleWithSnakeCaseMap_EntitiesByIdEntry {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSimpleWithSnakeCaseMap_EntitiesByIdEntry();
     while (reader.pos < end) {
@@ -922,15 +929,15 @@ function createBaseSimpleWithMapOfEnums(): SimpleWithMapOfEnums {
 }
 
 export const SimpleWithMapOfEnums = {
-  encode(message: SimpleWithMapOfEnums, writer: Writer = Writer.create()): Writer {
+  encode(message: SimpleWithMapOfEnums, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     Object.entries(message.enumsById).forEach(([key, value]) => {
       SimpleWithMapOfEnums_EnumsByIdEntry.encode({ key: key as any, value }, writer.uint32(10).fork()).ldelim();
     });
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): SimpleWithMapOfEnums {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): SimpleWithMapOfEnums {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSimpleWithMapOfEnums();
     while (reader.pos < end) {
@@ -956,7 +963,7 @@ function createBaseSimpleWithMapOfEnums_EnumsByIdEntry(): SimpleWithMapOfEnums_E
 }
 
 export const SimpleWithMapOfEnums_EnumsByIdEntry = {
-  encode(message: SimpleWithMapOfEnums_EnumsByIdEntry, writer: Writer = Writer.create()): Writer {
+  encode(message: SimpleWithMapOfEnums_EnumsByIdEntry, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.key !== 0) {
       writer.uint32(8).int32(message.key);
     }
@@ -966,8 +973,8 @@ export const SimpleWithMapOfEnums_EnumsByIdEntry = {
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): SimpleWithMapOfEnums_EnumsByIdEntry {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): SimpleWithMapOfEnums_EnumsByIdEntry {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSimpleWithMapOfEnums_EnumsByIdEntry();
     while (reader.pos < end) {
@@ -989,19 +996,19 @@ export const SimpleWithMapOfEnums_EnumsByIdEntry = {
 };
 
 function createBasePingRequest(): PingRequest {
-  return { input: '' };
+  return { input: "" };
 }
 
 export const PingRequest = {
-  encode(message: PingRequest, writer: Writer = Writer.create()): Writer {
-    if (message.input !== '') {
+  encode(message: PingRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.input !== "") {
       writer.uint32(10).string(message.input);
     }
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): PingRequest {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): PingRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBasePingRequest();
     while (reader.pos < end) {
@@ -1020,19 +1027,19 @@ export const PingRequest = {
 };
 
 function createBasePingResponse(): PingResponse {
-  return { output: '' };
+  return { output: "" };
 }
 
 export const PingResponse = {
-  encode(message: PingResponse, writer: Writer = Writer.create()): Writer {
-    if (message.output !== '') {
+  encode(message: PingResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.output !== "") {
       writer.uint32(10).string(message.output);
     }
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): PingResponse {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): PingResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBasePingResponse();
     while (reader.pos < end) {
@@ -1068,7 +1075,7 @@ function createBaseNumbers(): Numbers {
 }
 
 export const Numbers = {
-  encode(message: Numbers, writer: Writer = Writer.create()): Writer {
+  encode(message: Numbers, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.double !== 0) {
       writer.uint32(9).double(message.double);
     }
@@ -1108,8 +1115,8 @@ export const Numbers = {
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): Numbers {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): Numbers {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseNumbers();
     while (reader.pos < end) {
@@ -1173,7 +1180,7 @@ function createBaseSimpleButOptional(): SimpleButOptional {
 }
 
 export const SimpleButOptional = {
-  encode(message: SimpleButOptional, writer: Writer = Writer.create()): Writer {
+  encode(message: SimpleButOptional, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.name !== undefined) {
       writer.uint32(10).string(message.name);
     }
@@ -1198,8 +1205,8 @@ export const SimpleButOptional = {
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): SimpleButOptional {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): SimpleButOptional {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSimpleButOptional();
     while (reader.pos < end) {
@@ -1240,12 +1247,12 @@ function createBaseEmpty(): Empty {
 }
 
 export const Empty = {
-  encode(_: Empty, writer: Writer = Writer.create()): Writer {
+  encode(_: Empty, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): Empty {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): Empty {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseEmpty();
     while (reader.pos < end) {
@@ -1266,14 +1273,16 @@ export interface PingService {
 
 export class PingServiceClientImpl implements PingService {
   private readonly rpc: Rpc;
-  constructor(rpc: Rpc) {
+  private readonly service: string;
+  constructor(rpc: Rpc, opts?: { service?: string }) {
+    this.service = opts?.service || "simple.PingService";
     this.rpc = rpc;
     this.ping = this.ping.bind(this);
   }
   ping(request: PingRequest): Promise<PingResponse> {
     const data = PingRequest.encode(request).finish();
-    const promise = this.rpc.request('simple.PingService', 'ping', data);
-    return promise.then((data) => PingResponse.decode(new Reader(data)));
+    const promise = this.rpc.request(this.service, "ping", data);
+    return promise.then((data) => PingResponse.decode(new _m0.Reader(data)));
   }
 }
 
@@ -1281,657 +1290,1348 @@ interface Rpc {
   request(service: string, method: string, data: Uint8Array): Promise<Uint8Array>;
 }
 
+type ProtoMetaMessageOptions = {
+  options?: { [key: string]: any };
+  fields?: { [key: string]: { [key: string]: any } };
+  oneof?: { [key: string]: { [key: string]: any } };
+  nested?: { [key: string]: ProtoMetaMessageOptions };
+};
+
 export interface ProtoMetadata {
   fileDescriptor: FileDescriptorProto;
   references: { [key: string]: any };
   dependencies?: ProtoMetadata[];
+  options?: {
+    options?: { [key: string]: any };
+    services?: {
+      [key: string]: { options?: { [key: string]: any }; methods?: { [key: string]: { [key: string]: any } } };
+    };
+    messages?: { [key: string]: ProtoMetaMessageOptions };
+    enums?: { [key: string]: { options?: { [key: string]: any }; values?: { [key: string]: { [key: string]: any } } } };
+  };
 }
 
 export const protoMetadata: ProtoMetadata = {
   fileDescriptor: FileDescriptorProto.fromPartial({
-    dependency: [
-      'google/type/date.proto',
-      'google/protobuf/wrappers.proto',
-      'google/protobuf/timestamp.proto',
-      'import_dir/thing.proto',
+    "name": "simple.proto",
+    "package": "simple",
+    "dependency": [
+      "google/type/date.proto",
+      "google/protobuf/wrappers.proto",
+      "google/protobuf/timestamp.proto",
+      "import_dir/thing.proto",
     ],
-    publicDependency: [],
-    weakDependency: [],
-    messageType: [
-      {
-        field: [
-          { name: 'name', number: 1, label: 1, type: 9, jsonName: 'name' },
-          { name: 'age', number: 2, label: 1, type: 5, jsonName: 'age' },
-          {
-            name: 'created_at',
-            number: 9,
-            label: 1,
-            type: 11,
-            typeName: '.google.protobuf.Timestamp',
-            jsonName: 'createdAt',
-          },
-          { name: 'child', number: 3, label: 1, type: 11, typeName: '.simple.Child', jsonName: 'child' },
-          { name: 'state', number: 4, label: 1, type: 14, typeName: '.simple.StateEnum', jsonName: 'state' },
-          {
-            name: 'grand_children',
-            number: 5,
-            label: 3,
-            type: 11,
-            typeName: '.simple.Child',
-            jsonName: 'grandChildren',
-          },
-          { name: 'coins', number: 6, label: 3, type: 5, jsonName: 'coins' },
-          { name: 'snacks', number: 7, label: 3, type: 9, jsonName: 'snacks' },
-          { name: 'old_states', number: 8, label: 3, type: 14, typeName: '.simple.StateEnum', jsonName: 'oldStates' },
-          { name: 'thing', number: 10, label: 1, type: 11, typeName: '.simple.ImportedThing', jsonName: 'thing' },
-          { name: 'blobs', number: 11, label: 3, type: 12, jsonName: 'blobs' },
-          { name: 'birthday', number: 12, label: 1, type: 11, typeName: '.google.type.Date', jsonName: 'birthday' },
-          { name: 'blob', number: 13, label: 1, type: 12, jsonName: 'blob' },
-        ],
-        extension: [],
-        nestedType: [],
-        enumType: [],
-        extensionRange: [],
-        oneofDecl: [],
-        reservedRange: [],
-        reservedName: [],
-        name: 'Simple',
-      },
-      {
-        field: [
-          { name: 'name', number: 1, label: 1, type: 9, jsonName: 'name' },
-          { name: 'type', number: 2, label: 1, type: 14, typeName: '.simple.Child.Type', jsonName: 'type' },
-        ],
-        extension: [],
-        nestedType: [],
-        enumType: [
-          {
-            value: [
-              { name: 'UNKNOWN', number: 0 },
-              { name: 'GOOD', number: 1 },
-              { name: 'BAD', number: 2 },
-            ],
-            reservedRange: [],
-            reservedName: [],
-            name: 'Type',
-          },
-        ],
-        extensionRange: [],
-        oneofDecl: [],
-        reservedRange: [],
-        reservedName: [],
-        name: 'Child',
-      },
-      {
-        field: [
-          { name: 'name', number: 1, label: 1, type: 9, jsonName: 'name' },
-          {
-            name: 'message',
-            number: 2,
-            label: 1,
-            type: 11,
-            typeName: '.simple.Nested.InnerMessage',
-            jsonName: 'message',
-          },
-          { name: 'state', number: 3, label: 1, type: 14, typeName: '.simple.Nested.InnerEnum', jsonName: 'state' },
-        ],
-        extension: [],
-        nestedType: [
-          {
-            field: [
-              { name: 'name', number: 1, label: 1, type: 9, jsonName: 'name' },
-              {
-                name: 'deep',
-                number: 2,
-                label: 1,
-                type: 11,
-                typeName: '.simple.Nested.InnerMessage.DeepMessage',
-                jsonName: 'deep',
-              },
-            ],
-            extension: [],
-            nestedType: [
-              {
-                field: [{ name: 'name', number: 1, label: 1, type: 9, jsonName: 'name' }],
-                extension: [],
-                nestedType: [],
-                enumType: [],
-                extensionRange: [],
-                oneofDecl: [],
-                reservedRange: [],
-                reservedName: [],
-                name: 'DeepMessage',
-              },
-            ],
-            enumType: [],
-            extensionRange: [],
-            oneofDecl: [],
-            reservedRange: [],
-            reservedName: [],
-            name: 'InnerMessage',
-          },
-        ],
-        enumType: [
-          {
-            value: [
-              { name: 'UNKNOWN_INNER', number: 0 },
-              { name: 'GOOD', number: 100 },
-              { name: 'BAD', number: 1000 },
-            ],
-            reservedRange: [],
-            reservedName: [],
-            name: 'InnerEnum',
-          },
-        ],
-        extensionRange: [],
-        oneofDecl: [],
-        reservedRange: [],
-        reservedName: [],
-        name: 'Nested',
-      },
-      {
-        field: [
-          { name: 'first', number: 1, label: 1, type: 9, oneofIndex: 0, jsonName: 'first' },
-          { name: 'last', number: 2, label: 1, type: 9, oneofIndex: 0, jsonName: 'last' },
-        ],
-        extension: [],
-        nestedType: [],
-        enumType: [],
-        extensionRange: [],
-        oneofDecl: [{ name: 'name_fields' }],
-        reservedRange: [],
-        reservedName: [],
-        name: 'OneOfMessage',
-      },
-      {
-        field: [
-          { name: 'name', number: 1, label: 1, type: 11, typeName: '.google.protobuf.StringValue', jsonName: 'name' },
-          { name: 'age', number: 2, label: 1, type: 11, typeName: '.google.protobuf.Int32Value', jsonName: 'age' },
-          {
-            name: 'enabled',
-            number: 3,
-            label: 1,
-            type: 11,
-            typeName: '.google.protobuf.BoolValue',
-            jsonName: 'enabled',
-          },
-          { name: 'coins', number: 6, label: 3, type: 11, typeName: '.google.protobuf.Int32Value', jsonName: 'coins' },
-          {
-            name: 'snacks',
-            number: 7,
-            label: 3,
-            type: 11,
-            typeName: '.google.protobuf.StringValue',
-            jsonName: 'snacks',
-          },
-        ],
-        extension: [],
-        nestedType: [],
-        enumType: [],
-        extensionRange: [],
-        oneofDecl: [],
-        reservedRange: [],
-        reservedName: [],
-        name: 'SimpleWithWrappers',
-      },
-      {
-        field: [{ name: 'id', number: 1, label: 1, type: 5, jsonName: 'id' }],
-        extension: [],
-        nestedType: [],
-        enumType: [],
-        extensionRange: [],
-        oneofDecl: [],
-        reservedRange: [],
-        reservedName: [],
-        name: 'Entity',
-      },
-      {
-        field: [
-          {
-            name: 'entitiesById',
-            number: 1,
-            label: 3,
-            type: 11,
-            typeName: '.simple.SimpleWithMap.EntitiesByIdEntry',
-            jsonName: 'entitiesById',
-          },
-          {
-            name: 'nameLookup',
-            number: 2,
-            label: 3,
-            type: 11,
-            typeName: '.simple.SimpleWithMap.NameLookupEntry',
-            jsonName: 'nameLookup',
-          },
-          {
-            name: 'intLookup',
-            number: 3,
-            label: 3,
-            type: 11,
-            typeName: '.simple.SimpleWithMap.IntLookupEntry',
-            jsonName: 'intLookup',
-          },
-          {
-            name: 'mapOfTimestamps',
-            number: 4,
-            label: 3,
-            type: 11,
-            typeName: '.simple.SimpleWithMap.MapOfTimestampsEntry',
-            jsonName: 'mapOfTimestamps',
-          },
-          {
-            name: 'mapOfBytes',
-            number: 5,
-            label: 3,
-            type: 11,
-            typeName: '.simple.SimpleWithMap.MapOfBytesEntry',
-            jsonName: 'mapOfBytes',
-          },
-        ],
-        extension: [],
-        nestedType: [
-          {
-            field: [
-              { name: 'key', number: 1, label: 1, type: 5, jsonName: 'key' },
-              { name: 'value', number: 2, label: 1, type: 11, typeName: '.simple.Entity', jsonName: 'value' },
-            ],
-            extension: [],
-            nestedType: [],
-            enumType: [],
-            extensionRange: [],
-            oneofDecl: [],
-            reservedRange: [],
-            reservedName: [],
-            name: 'EntitiesByIdEntry',
-            options: { uninterpretedOption: [], mapEntry: true },
-          },
-          {
-            field: [
-              { name: 'key', number: 1, label: 1, type: 9, jsonName: 'key' },
-              { name: 'value', number: 2, label: 1, type: 9, jsonName: 'value' },
-            ],
-            extension: [],
-            nestedType: [],
-            enumType: [],
-            extensionRange: [],
-            oneofDecl: [],
-            reservedRange: [],
-            reservedName: [],
-            name: 'NameLookupEntry',
-            options: { uninterpretedOption: [], mapEntry: true },
-          },
-          {
-            field: [
-              { name: 'key', number: 1, label: 1, type: 5, jsonName: 'key' },
-              { name: 'value', number: 2, label: 1, type: 5, jsonName: 'value' },
-            ],
-            extension: [],
-            nestedType: [],
-            enumType: [],
-            extensionRange: [],
-            oneofDecl: [],
-            reservedRange: [],
-            reservedName: [],
-            name: 'IntLookupEntry',
-            options: { uninterpretedOption: [], mapEntry: true },
-          },
-          {
-            field: [
-              { name: 'key', number: 1, label: 1, type: 9, jsonName: 'key' },
-              {
-                name: 'value',
-                number: 2,
-                label: 1,
-                type: 11,
-                typeName: '.google.protobuf.Timestamp',
-                jsonName: 'value',
-              },
-            ],
-            extension: [],
-            nestedType: [],
-            enumType: [],
-            extensionRange: [],
-            oneofDecl: [],
-            reservedRange: [],
-            reservedName: [],
-            name: 'MapOfTimestampsEntry',
-            options: { uninterpretedOption: [], mapEntry: true },
-          },
-          {
-            field: [
-              { name: 'key', number: 1, label: 1, type: 9, jsonName: 'key' },
-              { name: 'value', number: 2, label: 1, type: 12, jsonName: 'value' },
-            ],
-            extension: [],
-            nestedType: [],
-            enumType: [],
-            extensionRange: [],
-            oneofDecl: [],
-            reservedRange: [],
-            reservedName: [],
-            name: 'MapOfBytesEntry',
-            options: { uninterpretedOption: [], mapEntry: true },
-          },
-        ],
-        enumType: [],
-        extensionRange: [],
-        oneofDecl: [],
-        reservedRange: [],
-        reservedName: [],
-        name: 'SimpleWithMap',
-      },
-      {
-        field: [
-          {
-            name: 'entities_by_id',
-            number: 1,
-            label: 3,
-            type: 11,
-            typeName: '.simple.SimpleWithSnakeCaseMap.EntitiesByIdEntry',
-            jsonName: 'entitiesById',
-          },
-        ],
-        extension: [],
-        nestedType: [
-          {
-            field: [
-              { name: 'key', number: 1, label: 1, type: 5, jsonName: 'key' },
-              { name: 'value', number: 2, label: 1, type: 11, typeName: '.simple.Entity', jsonName: 'value' },
-            ],
-            extension: [],
-            nestedType: [],
-            enumType: [],
-            extensionRange: [],
-            oneofDecl: [],
-            reservedRange: [],
-            reservedName: [],
-            name: 'EntitiesByIdEntry',
-            options: { uninterpretedOption: [], mapEntry: true },
-          },
-        ],
-        enumType: [],
-        extensionRange: [],
-        oneofDecl: [],
-        reservedRange: [],
-        reservedName: [],
-        name: 'SimpleWithSnakeCaseMap',
-      },
-      {
-        field: [
-          {
-            name: 'enums_by_id',
-            number: 1,
-            label: 3,
-            type: 11,
-            typeName: '.simple.SimpleWithMapOfEnums.EnumsByIdEntry',
-            jsonName: 'enumsById',
-          },
-        ],
-        extension: [],
-        nestedType: [
-          {
-            field: [
-              { name: 'key', number: 1, label: 1, type: 5, jsonName: 'key' },
-              { name: 'value', number: 2, label: 1, type: 14, typeName: '.simple.StateEnum', jsonName: 'value' },
-            ],
-            extension: [],
-            nestedType: [],
-            enumType: [],
-            extensionRange: [],
-            oneofDecl: [],
-            reservedRange: [],
-            reservedName: [],
-            name: 'EnumsByIdEntry',
-            options: { uninterpretedOption: [], mapEntry: true },
-          },
-        ],
-        enumType: [],
-        extensionRange: [],
-        oneofDecl: [],
-        reservedRange: [],
-        reservedName: [],
-        name: 'SimpleWithMapOfEnums',
-      },
-      {
-        field: [{ name: 'input', number: 1, label: 1, type: 9, jsonName: 'input' }],
-        extension: [],
-        nestedType: [],
-        enumType: [],
-        extensionRange: [],
-        oneofDecl: [],
-        reservedRange: [],
-        reservedName: [],
-        name: 'PingRequest',
-      },
-      {
-        field: [{ name: 'output', number: 1, label: 1, type: 9, jsonName: 'output' }],
-        extension: [],
-        nestedType: [],
-        enumType: [],
-        extensionRange: [],
-        oneofDecl: [],
-        reservedRange: [],
-        reservedName: [],
-        name: 'PingResponse',
-      },
-      {
-        field: [
-          { name: 'double', number: 1, label: 1, type: 1, jsonName: 'double' },
-          { name: 'float', number: 2, label: 1, type: 2, jsonName: 'float' },
-          { name: 'int32', number: 3, label: 1, type: 5, jsonName: 'int32' },
-          { name: 'int64', number: 4, label: 1, type: 3, jsonName: 'int64' },
-          { name: 'uint32', number: 5, label: 1, type: 13, jsonName: 'uint32' },
-          { name: 'uint64', number: 6, label: 1, type: 4, jsonName: 'uint64' },
-          { name: 'sint32', number: 7, label: 1, type: 17, jsonName: 'sint32' },
-          { name: 'sint64', number: 8, label: 1, type: 18, jsonName: 'sint64' },
-          { name: 'fixed32', number: 9, label: 1, type: 7, jsonName: 'fixed32' },
-          { name: 'fixed64', number: 10, label: 1, type: 6, jsonName: 'fixed64' },
-          { name: 'sfixed32', number: 11, label: 1, type: 15, jsonName: 'sfixed32' },
-          { name: 'sfixed64', number: 12, label: 1, type: 16, jsonName: 'sfixed64' },
-        ],
-        extension: [],
-        nestedType: [],
-        enumType: [],
-        extensionRange: [],
-        oneofDecl: [],
-        reservedRange: [],
-        reservedName: [],
-        name: 'Numbers',
-      },
-      {
-        field: [
-          { name: 'name', number: 1, label: 1, type: 9, oneofIndex: 0, jsonName: 'name', proto3Optional: true },
-          { name: 'age', number: 2, label: 1, type: 5, oneofIndex: 1, jsonName: 'age', proto3Optional: true },
-          {
-            name: 'created_at',
-            number: 9,
-            label: 1,
-            type: 11,
-            typeName: '.google.protobuf.Timestamp',
-            oneofIndex: 2,
-            jsonName: 'createdAt',
-            proto3Optional: true,
-          },
-          {
-            name: 'child',
-            number: 3,
-            label: 1,
-            type: 11,
-            typeName: '.simple.Child',
-            oneofIndex: 3,
-            jsonName: 'child',
-            proto3Optional: true,
-          },
-          {
-            name: 'state',
-            number: 4,
-            label: 1,
-            type: 14,
-            typeName: '.simple.StateEnum',
-            oneofIndex: 4,
-            jsonName: 'state',
-            proto3Optional: true,
-          },
-          {
-            name: 'thing',
-            number: 10,
-            label: 1,
-            type: 11,
-            typeName: '.simple.ImportedThing',
-            oneofIndex: 5,
-            jsonName: 'thing',
-            proto3Optional: true,
-          },
-          {
-            name: 'birthday',
-            number: 12,
-            label: 1,
-            type: 11,
-            typeName: '.google.type.Date',
-            oneofIndex: 6,
-            jsonName: 'birthday',
-            proto3Optional: true,
-          },
-        ],
-        extension: [],
-        nestedType: [],
-        enumType: [],
-        extensionRange: [],
-        oneofDecl: [
-          { name: '_name' },
-          { name: '_age' },
-          { name: '_created_at' },
-          { name: '_child' },
-          { name: '_state' },
-          { name: '_thing' },
-          { name: '_birthday' },
-        ],
-        reservedRange: [],
-        reservedName: [],
-        name: 'SimpleButOptional',
-      },
-      {
-        field: [],
-        extension: [],
-        nestedType: [],
-        enumType: [],
-        extensionRange: [],
-        oneofDecl: [],
-        reservedRange: [],
-        reservedName: [],
-        name: 'Empty',
-      },
-    ],
-    enumType: [
-      {
-        value: [
-          { name: 'UNKNOWN', number: 0 },
-          { name: 'ON', number: 2 },
-          { name: 'OFF', number: 3 },
-        ],
-        reservedRange: [],
-        reservedName: [],
-        name: 'StateEnum',
-      },
-    ],
-    service: [
-      {
-        method: [{ name: 'ping', inputType: '.simple.PingRequest', outputType: '.simple.PingResponse' }],
-        name: 'PingService',
-      },
-    ],
-    extension: [],
-    name: 'simple.proto',
-    package: 'simple',
-    sourceCodeInfo: {
-      location: [
-        {
-          path: [12],
-          span: [2, 0, 18],
-          leadingDetachedComments: [],
-          leadingComments:
-            ' Adding a comment to the syntax will become the first\n comment in the output source file.\n',
+    "publicDependency": [],
+    "weakDependency": [],
+    "messageType": [{
+      "name": "Simple",
+      "field": [{
+        "name": "name",
+        "number": 1,
+        "label": 1,
+        "type": 9,
+        "typeName": "",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "name",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "age",
+        "number": 2,
+        "label": 1,
+        "type": 5,
+        "typeName": "",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "age",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "created_at",
+        "number": 9,
+        "label": 1,
+        "type": 11,
+        "typeName": ".google.protobuf.Timestamp",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "createdAt",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "child",
+        "number": 3,
+        "label": 1,
+        "type": 11,
+        "typeName": ".simple.Child",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "child",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "state",
+        "number": 4,
+        "label": 1,
+        "type": 14,
+        "typeName": ".simple.StateEnum",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "state",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "grand_children",
+        "number": 5,
+        "label": 3,
+        "type": 11,
+        "typeName": ".simple.Child",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "grandChildren",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "coins",
+        "number": 6,
+        "label": 3,
+        "type": 5,
+        "typeName": "",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "coins",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "snacks",
+        "number": 7,
+        "label": 3,
+        "type": 9,
+        "typeName": "",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "snacks",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "old_states",
+        "number": 8,
+        "label": 3,
+        "type": 14,
+        "typeName": ".simple.StateEnum",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "oldStates",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "thing",
+        "number": 10,
+        "label": 1,
+        "type": 11,
+        "typeName": ".simple.ImportedThing",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "thing",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "blobs",
+        "number": 11,
+        "label": 3,
+        "type": 12,
+        "typeName": "",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "blobs",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "birthday",
+        "number": 12,
+        "label": 1,
+        "type": 11,
+        "typeName": ".google.type.Date",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "birthday",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "blob",
+        "number": 13,
+        "label": 1,
+        "type": 12,
+        "typeName": "",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "blob",
+        "options": undefined,
+        "proto3Optional": false,
+      }],
+      "extension": [],
+      "nestedType": [],
+      "enumType": [],
+      "extensionRange": [],
+      "oneofDecl": [],
+      "options": undefined,
+      "reservedRange": [],
+      "reservedName": [],
+    }, {
+      "name": "Child",
+      "field": [{
+        "name": "name",
+        "number": 1,
+        "label": 1,
+        "type": 9,
+        "typeName": "",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "name",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "type",
+        "number": 2,
+        "label": 1,
+        "type": 14,
+        "typeName": ".simple.Child.Type",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "type",
+        "options": undefined,
+        "proto3Optional": false,
+      }],
+      "extension": [],
+      "nestedType": [],
+      "enumType": [{
+        "name": "Type",
+        "value": [{ "name": "UNKNOWN", "number": 0, "options": undefined }, {
+          "name": "GOOD",
+          "number": 1,
+          "options": undefined,
+        }, { "name": "BAD", "number": 2, "options": undefined }],
+        "options": undefined,
+        "reservedRange": [],
+        "reservedName": [],
+      }],
+      "extensionRange": [],
+      "oneofDecl": [],
+      "options": undefined,
+      "reservedRange": [],
+      "reservedName": [],
+    }, {
+      "name": "Nested",
+      "field": [{
+        "name": "name",
+        "number": 1,
+        "label": 1,
+        "type": 9,
+        "typeName": "",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "name",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "message",
+        "number": 2,
+        "label": 1,
+        "type": 11,
+        "typeName": ".simple.Nested.InnerMessage",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "message",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "state",
+        "number": 3,
+        "label": 1,
+        "type": 14,
+        "typeName": ".simple.Nested.InnerEnum",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "state",
+        "options": undefined,
+        "proto3Optional": false,
+      }],
+      "extension": [],
+      "nestedType": [{
+        "name": "InnerMessage",
+        "field": [{
+          "name": "name",
+          "number": 1,
+          "label": 1,
+          "type": 9,
+          "typeName": "",
+          "extendee": "",
+          "defaultValue": "",
+          "oneofIndex": 0,
+          "jsonName": "name",
+          "options": undefined,
+          "proto3Optional": false,
+        }, {
+          "name": "deep",
+          "number": 2,
+          "label": 1,
+          "type": 11,
+          "typeName": ".simple.Nested.InnerMessage.DeepMessage",
+          "extendee": "",
+          "defaultValue": "",
+          "oneofIndex": 0,
+          "jsonName": "deep",
+          "options": undefined,
+          "proto3Optional": false,
+        }],
+        "extension": [],
+        "nestedType": [{
+          "name": "DeepMessage",
+          "field": [{
+            "name": "name",
+            "number": 1,
+            "label": 1,
+            "type": 9,
+            "typeName": "",
+            "extendee": "",
+            "defaultValue": "",
+            "oneofIndex": 0,
+            "jsonName": "name",
+            "options": undefined,
+            "proto3Optional": false,
+          }],
+          "extension": [],
+          "nestedType": [],
+          "enumType": [],
+          "extensionRange": [],
+          "oneofDecl": [],
+          "options": undefined,
+          "reservedRange": [],
+          "reservedName": [],
+        }],
+        "enumType": [],
+        "extensionRange": [],
+        "oneofDecl": [],
+        "options": undefined,
+        "reservedRange": [],
+        "reservedName": [],
+      }],
+      "enumType": [{
+        "name": "InnerEnum",
+        "value": [{ "name": "UNKNOWN_INNER", "number": 0, "options": undefined }, {
+          "name": "GOOD",
+          "number": 100,
+          "options": undefined,
+        }, { "name": "BAD", "number": 1000, "options": undefined }],
+        "options": undefined,
+        "reservedRange": [],
+        "reservedName": [],
+      }],
+      "extensionRange": [],
+      "oneofDecl": [],
+      "options": undefined,
+      "reservedRange": [],
+      "reservedName": [],
+    }, {
+      "name": "OneOfMessage",
+      "field": [{
+        "name": "first",
+        "number": 1,
+        "label": 1,
+        "type": 9,
+        "typeName": "",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "first",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "last",
+        "number": 2,
+        "label": 1,
+        "type": 9,
+        "typeName": "",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "last",
+        "options": undefined,
+        "proto3Optional": false,
+      }],
+      "extension": [],
+      "nestedType": [],
+      "enumType": [],
+      "extensionRange": [],
+      "oneofDecl": [{ "name": "name_fields", "options": undefined }],
+      "options": undefined,
+      "reservedRange": [],
+      "reservedName": [],
+    }, {
+      "name": "SimpleWithWrappers",
+      "field": [{
+        "name": "name",
+        "number": 1,
+        "label": 1,
+        "type": 11,
+        "typeName": ".google.protobuf.StringValue",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "name",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "age",
+        "number": 2,
+        "label": 1,
+        "type": 11,
+        "typeName": ".google.protobuf.Int32Value",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "age",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "enabled",
+        "number": 3,
+        "label": 1,
+        "type": 11,
+        "typeName": ".google.protobuf.BoolValue",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "enabled",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "coins",
+        "number": 6,
+        "label": 3,
+        "type": 11,
+        "typeName": ".google.protobuf.Int32Value",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "coins",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "snacks",
+        "number": 7,
+        "label": 3,
+        "type": 11,
+        "typeName": ".google.protobuf.StringValue",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "snacks",
+        "options": undefined,
+        "proto3Optional": false,
+      }],
+      "extension": [],
+      "nestedType": [],
+      "enumType": [],
+      "extensionRange": [],
+      "oneofDecl": [],
+      "options": undefined,
+      "reservedRange": [],
+      "reservedName": [],
+    }, {
+      "name": "Entity",
+      "field": [{
+        "name": "id",
+        "number": 1,
+        "label": 1,
+        "type": 5,
+        "typeName": "",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "id",
+        "options": undefined,
+        "proto3Optional": false,
+      }],
+      "extension": [],
+      "nestedType": [],
+      "enumType": [],
+      "extensionRange": [],
+      "oneofDecl": [],
+      "options": undefined,
+      "reservedRange": [],
+      "reservedName": [],
+    }, {
+      "name": "SimpleWithMap",
+      "field": [{
+        "name": "entitiesById",
+        "number": 1,
+        "label": 3,
+        "type": 11,
+        "typeName": ".simple.SimpleWithMap.EntitiesByIdEntry",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "entitiesById",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "nameLookup",
+        "number": 2,
+        "label": 3,
+        "type": 11,
+        "typeName": ".simple.SimpleWithMap.NameLookupEntry",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "nameLookup",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "intLookup",
+        "number": 3,
+        "label": 3,
+        "type": 11,
+        "typeName": ".simple.SimpleWithMap.IntLookupEntry",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "intLookup",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "mapOfTimestamps",
+        "number": 4,
+        "label": 3,
+        "type": 11,
+        "typeName": ".simple.SimpleWithMap.MapOfTimestampsEntry",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "mapOfTimestamps",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "mapOfBytes",
+        "number": 5,
+        "label": 3,
+        "type": 11,
+        "typeName": ".simple.SimpleWithMap.MapOfBytesEntry",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "mapOfBytes",
+        "options": undefined,
+        "proto3Optional": false,
+      }],
+      "extension": [],
+      "nestedType": [{
+        "name": "EntitiesByIdEntry",
+        "field": [{
+          "name": "key",
+          "number": 1,
+          "label": 1,
+          "type": 5,
+          "typeName": "",
+          "extendee": "",
+          "defaultValue": "",
+          "oneofIndex": 0,
+          "jsonName": "key",
+          "options": undefined,
+          "proto3Optional": false,
+        }, {
+          "name": "value",
+          "number": 2,
+          "label": 1,
+          "type": 11,
+          "typeName": ".simple.Entity",
+          "extendee": "",
+          "defaultValue": "",
+          "oneofIndex": 0,
+          "jsonName": "value",
+          "options": undefined,
+          "proto3Optional": false,
+        }],
+        "extension": [],
+        "nestedType": [],
+        "enumType": [],
+        "extensionRange": [],
+        "oneofDecl": [],
+        "options": {
+          "messageSetWireFormat": false,
+          "noStandardDescriptorAccessor": false,
+          "deprecated": false,
+          "mapEntry": true,
+          "uninterpretedOption": [],
         },
-        {
-          path: [4, 0],
-          span: [13, 0, 30, 1],
-          leadingDetachedComments: [
-            ' This comment is seperated by a blank non-comment line, and will detatch from \n the following comment on the message Simple.\n',
-          ],
-          leadingComments: '* Example comment on the Simple message ',
+        "reservedRange": [],
+        "reservedName": [],
+      }, {
+        "name": "NameLookupEntry",
+        "field": [{
+          "name": "key",
+          "number": 1,
+          "label": 1,
+          "type": 9,
+          "typeName": "",
+          "extendee": "",
+          "defaultValue": "",
+          "oneofIndex": 0,
+          "jsonName": "key",
+          "options": undefined,
+          "proto3Optional": false,
+        }, {
+          "name": "value",
+          "number": 2,
+          "label": 1,
+          "type": 9,
+          "typeName": "",
+          "extendee": "",
+          "defaultValue": "",
+          "oneofIndex": 0,
+          "jsonName": "value",
+          "options": undefined,
+          "proto3Optional": false,
+        }],
+        "extension": [],
+        "nestedType": [],
+        "enumType": [],
+        "extensionRange": [],
+        "oneofDecl": [],
+        "options": {
+          "messageSetWireFormat": false,
+          "noStandardDescriptorAccessor": false,
+          "deprecated": false,
+          "mapEntry": true,
+          "uninterpretedOption": [],
         },
-        { path: [4, 0, 2, 0], span: [15, 2, 18], leadingDetachedComments: [], leadingComments: ' Name field\n' },
-        { path: [4, 0, 2, 1], span: [17, 2, 16], leadingDetachedComments: [], leadingComments: ' Age ' },
-        {
-          path: [4, 0, 2, 2],
-          span: [18, 2, 43],
-          leadingDetachedComments: [],
-          trailingComments: ' This comment will also attach\n',
+        "reservedRange": [],
+        "reservedName": [],
+      }, {
+        "name": "IntLookupEntry",
+        "field": [{
+          "name": "key",
+          "number": 1,
+          "label": 1,
+          "type": 5,
+          "typeName": "",
+          "extendee": "",
+          "defaultValue": "",
+          "oneofIndex": 0,
+          "jsonName": "key",
+          "options": undefined,
+          "proto3Optional": false,
+        }, {
+          "name": "value",
+          "number": 2,
+          "label": 1,
+          "type": 5,
+          "typeName": "",
+          "extendee": "",
+          "defaultValue": "",
+          "oneofIndex": 0,
+          "jsonName": "value",
+          "options": undefined,
+          "proto3Optional": false,
+        }],
+        "extension": [],
+        "nestedType": [],
+        "enumType": [],
+        "extensionRange": [],
+        "oneofDecl": [],
+        "options": {
+          "messageSetWireFormat": false,
+          "noStandardDescriptorAccessor": false,
+          "deprecated": false,
+          "mapEntry": true,
+          "uninterpretedOption": [],
         },
-        {
-          path: [4, 0, 2, 9],
-          span: [26, 2, 27],
-          leadingDetachedComments: [],
-          leadingComments: ' A thing (imported from thing)\n',
+        "reservedRange": [],
+        "reservedName": [],
+      }, {
+        "name": "MapOfTimestampsEntry",
+        "field": [{
+          "name": "key",
+          "number": 1,
+          "label": 1,
+          "type": 9,
+          "typeName": "",
+          "extendee": "",
+          "defaultValue": "",
+          "oneofIndex": 0,
+          "jsonName": "key",
+          "options": undefined,
+          "proto3Optional": false,
+        }, {
+          "name": "value",
+          "number": 2,
+          "label": 1,
+          "type": 11,
+          "typeName": ".google.protobuf.Timestamp",
+          "extendee": "",
+          "defaultValue": "",
+          "oneofIndex": 0,
+          "jsonName": "value",
+          "options": undefined,
+          "proto3Optional": false,
+        }],
+        "extension": [],
+        "nestedType": [],
+        "enumType": [],
+        "extensionRange": [],
+        "oneofDecl": [],
+        "options": {
+          "messageSetWireFormat": false,
+          "noStandardDescriptorAccessor": false,
+          "deprecated": false,
+          "mapEntry": true,
+          "uninterpretedOption": [],
         },
-        {
-          path: [4, 2, 3, 0],
-          span: [54, 2, 61, 3],
-          leadingDetachedComments: [],
-          leadingComments: ' Comment for a nested message */\n',
+        "reservedRange": [],
+        "reservedName": [],
+      }, {
+        "name": "MapOfBytesEntry",
+        "field": [{
+          "name": "key",
+          "number": 1,
+          "label": 1,
+          "type": 9,
+          "typeName": "",
+          "extendee": "",
+          "defaultValue": "",
+          "oneofIndex": 0,
+          "jsonName": "key",
+          "options": undefined,
+          "proto3Optional": false,
+        }, {
+          "name": "value",
+          "number": 2,
+          "label": 1,
+          "type": 12,
+          "typeName": "",
+          "extendee": "",
+          "defaultValue": "",
+          "oneofIndex": 0,
+          "jsonName": "value",
+          "options": undefined,
+          "proto3Optional": false,
+        }],
+        "extension": [],
+        "nestedType": [],
+        "enumType": [],
+        "extensionRange": [],
+        "oneofDecl": [],
+        "options": {
+          "messageSetWireFormat": false,
+          "noStandardDescriptorAccessor": false,
+          "deprecated": false,
+          "mapEntry": true,
+          "uninterpretedOption": [],
         },
-        {
-          path: [4, 12],
-          span: [133, 0, 144, 1],
-          leadingDetachedComments: [],
-          leadingComments: "* For testing proto3's field presence feature. ",
+        "reservedRange": [],
+        "reservedName": [],
+      }],
+      "enumType": [],
+      "extensionRange": [],
+      "oneofDecl": [],
+      "options": undefined,
+      "reservedRange": [],
+      "reservedName": [],
+    }, {
+      "name": "SimpleWithSnakeCaseMap",
+      "field": [{
+        "name": "entities_by_id",
+        "number": 1,
+        "label": 3,
+        "type": 11,
+        "typeName": ".simple.SimpleWithSnakeCaseMap.EntitiesByIdEntry",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "entitiesById",
+        "options": undefined,
+        "proto3Optional": false,
+      }],
+      "extension": [],
+      "nestedType": [{
+        "name": "EntitiesByIdEntry",
+        "field": [{
+          "name": "key",
+          "number": 1,
+          "label": 1,
+          "type": 5,
+          "typeName": "",
+          "extendee": "",
+          "defaultValue": "",
+          "oneofIndex": 0,
+          "jsonName": "key",
+          "options": undefined,
+          "proto3Optional": false,
+        }, {
+          "name": "value",
+          "number": 2,
+          "label": 1,
+          "type": 11,
+          "typeName": ".simple.Entity",
+          "extendee": "",
+          "defaultValue": "",
+          "oneofIndex": 0,
+          "jsonName": "value",
+          "options": undefined,
+          "proto3Optional": false,
+        }],
+        "extension": [],
+        "nestedType": [],
+        "enumType": [],
+        "extensionRange": [],
+        "oneofDecl": [],
+        "options": {
+          "messageSetWireFormat": false,
+          "noStandardDescriptorAccessor": false,
+          "deprecated": false,
+          "mapEntry": true,
+          "uninterpretedOption": [],
         },
-        { path: [4, 12, 2, 0], span: [135, 2, 27], leadingDetachedComments: [], leadingComments: ' Name field\n' },
-        { path: [4, 12, 2, 1], span: [137, 2, 25], leadingDetachedComments: [], leadingComments: ' Age ' },
-        {
-          path: [4, 12, 2, 2],
-          span: [138, 2, 52],
-          leadingDetachedComments: [],
-          trailingComments: ' This comment will also attach\n',
+        "reservedRange": [],
+        "reservedName": [],
+      }],
+      "enumType": [],
+      "extensionRange": [],
+      "oneofDecl": [],
+      "options": undefined,
+      "reservedRange": [],
+      "reservedName": [],
+    }, {
+      "name": "SimpleWithMapOfEnums",
+      "field": [{
+        "name": "enums_by_id",
+        "number": 1,
+        "label": 3,
+        "type": 11,
+        "typeName": ".simple.SimpleWithMapOfEnums.EnumsByIdEntry",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "enumsById",
+        "options": undefined,
+        "proto3Optional": false,
+      }],
+      "extension": [],
+      "nestedType": [{
+        "name": "EnumsByIdEntry",
+        "field": [{
+          "name": "key",
+          "number": 1,
+          "label": 1,
+          "type": 5,
+          "typeName": "",
+          "extendee": "",
+          "defaultValue": "",
+          "oneofIndex": 0,
+          "jsonName": "key",
+          "options": undefined,
+          "proto3Optional": false,
+        }, {
+          "name": "value",
+          "number": 2,
+          "label": 1,
+          "type": 14,
+          "typeName": ".simple.StateEnum",
+          "extendee": "",
+          "defaultValue": "",
+          "oneofIndex": 0,
+          "jsonName": "value",
+          "options": undefined,
+          "proto3Optional": false,
+        }],
+        "extension": [],
+        "nestedType": [],
+        "enumType": [],
+        "extensionRange": [],
+        "oneofDecl": [],
+        "options": {
+          "messageSetWireFormat": false,
+          "noStandardDescriptorAccessor": false,
+          "deprecated": false,
+          "mapEntry": true,
+          "uninterpretedOption": [],
         },
-        {
-          path: [4, 12, 2, 5],
-          span: [142, 2, 36],
-          leadingDetachedComments: [],
-          leadingComments: ' A thing (imported from thing)\n',
-        },
+        "reservedRange": [],
+        "reservedName": [],
+      }],
+      "enumType": [],
+      "extensionRange": [],
+      "oneofDecl": [],
+      "options": undefined,
+      "reservedRange": [],
+      "reservedName": [],
+    }, {
+      "name": "PingRequest",
+      "field": [{
+        "name": "input",
+        "number": 1,
+        "label": 1,
+        "type": 9,
+        "typeName": "",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "input",
+        "options": undefined,
+        "proto3Optional": false,
+      }],
+      "extension": [],
+      "nestedType": [],
+      "enumType": [],
+      "extensionRange": [],
+      "oneofDecl": [],
+      "options": undefined,
+      "reservedRange": [],
+      "reservedName": [],
+    }, {
+      "name": "PingResponse",
+      "field": [{
+        "name": "output",
+        "number": 1,
+        "label": 1,
+        "type": 9,
+        "typeName": "",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "output",
+        "options": undefined,
+        "proto3Optional": false,
+      }],
+      "extension": [],
+      "nestedType": [],
+      "enumType": [],
+      "extensionRange": [],
+      "oneofDecl": [],
+      "options": undefined,
+      "reservedRange": [],
+      "reservedName": [],
+    }, {
+      "name": "Numbers",
+      "field": [{
+        "name": "double",
+        "number": 1,
+        "label": 1,
+        "type": 1,
+        "typeName": "",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "double",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "float",
+        "number": 2,
+        "label": 1,
+        "type": 2,
+        "typeName": "",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "float",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "int32",
+        "number": 3,
+        "label": 1,
+        "type": 5,
+        "typeName": "",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "int32",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "int64",
+        "number": 4,
+        "label": 1,
+        "type": 3,
+        "typeName": "",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "int64",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "uint32",
+        "number": 5,
+        "label": 1,
+        "type": 13,
+        "typeName": "",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "uint32",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "uint64",
+        "number": 6,
+        "label": 1,
+        "type": 4,
+        "typeName": "",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "uint64",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "sint32",
+        "number": 7,
+        "label": 1,
+        "type": 17,
+        "typeName": "",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "sint32",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "sint64",
+        "number": 8,
+        "label": 1,
+        "type": 18,
+        "typeName": "",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "sint64",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "fixed32",
+        "number": 9,
+        "label": 1,
+        "type": 7,
+        "typeName": "",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "fixed32",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "fixed64",
+        "number": 10,
+        "label": 1,
+        "type": 6,
+        "typeName": "",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "fixed64",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "sfixed32",
+        "number": 11,
+        "label": 1,
+        "type": 15,
+        "typeName": "",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "sfixed32",
+        "options": undefined,
+        "proto3Optional": false,
+      }, {
+        "name": "sfixed64",
+        "number": 12,
+        "label": 1,
+        "type": 16,
+        "typeName": "",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "sfixed64",
+        "options": undefined,
+        "proto3Optional": false,
+      }],
+      "extension": [],
+      "nestedType": [],
+      "enumType": [],
+      "extensionRange": [],
+      "oneofDecl": [],
+      "options": undefined,
+      "reservedRange": [],
+      "reservedName": [],
+    }, {
+      "name": "SimpleButOptional",
+      "field": [{
+        "name": "name",
+        "number": 1,
+        "label": 1,
+        "type": 9,
+        "typeName": "",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 0,
+        "jsonName": "name",
+        "options": undefined,
+        "proto3Optional": true,
+      }, {
+        "name": "age",
+        "number": 2,
+        "label": 1,
+        "type": 5,
+        "typeName": "",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 1,
+        "jsonName": "age",
+        "options": undefined,
+        "proto3Optional": true,
+      }, {
+        "name": "created_at",
+        "number": 9,
+        "label": 1,
+        "type": 11,
+        "typeName": ".google.protobuf.Timestamp",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 2,
+        "jsonName": "createdAt",
+        "options": undefined,
+        "proto3Optional": true,
+      }, {
+        "name": "child",
+        "number": 3,
+        "label": 1,
+        "type": 11,
+        "typeName": ".simple.Child",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 3,
+        "jsonName": "child",
+        "options": undefined,
+        "proto3Optional": true,
+      }, {
+        "name": "state",
+        "number": 4,
+        "label": 1,
+        "type": 14,
+        "typeName": ".simple.StateEnum",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 4,
+        "jsonName": "state",
+        "options": undefined,
+        "proto3Optional": true,
+      }, {
+        "name": "thing",
+        "number": 10,
+        "label": 1,
+        "type": 11,
+        "typeName": ".simple.ImportedThing",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 5,
+        "jsonName": "thing",
+        "options": undefined,
+        "proto3Optional": true,
+      }, {
+        "name": "birthday",
+        "number": 12,
+        "label": 1,
+        "type": 11,
+        "typeName": ".google.type.Date",
+        "extendee": "",
+        "defaultValue": "",
+        "oneofIndex": 6,
+        "jsonName": "birthday",
+        "options": undefined,
+        "proto3Optional": true,
+      }],
+      "extension": [],
+      "nestedType": [],
+      "enumType": [],
+      "extensionRange": [],
+      "oneofDecl": [
+        { "name": "_name", "options": undefined },
+        { "name": "_age", "options": undefined },
+        { "name": "_created_at", "options": undefined },
+        { "name": "_child", "options": undefined },
+        { "name": "_state", "options": undefined },
+        { "name": "_thing", "options": undefined },
+        { "name": "_birthday", "options": undefined },
       ],
+      "options": undefined,
+      "reservedRange": [],
+      "reservedName": [],
+    }, {
+      "name": "Empty",
+      "field": [],
+      "extension": [],
+      "nestedType": [],
+      "enumType": [],
+      "extensionRange": [],
+      "oneofDecl": [],
+      "options": undefined,
+      "reservedRange": [],
+      "reservedName": [],
+    }],
+    "enumType": [{
+      "name": "StateEnum",
+      "value": [{ "name": "UNKNOWN", "number": 0, "options": undefined }, {
+        "name": "ON",
+        "number": 2,
+        "options": undefined,
+      }, { "name": "OFF", "number": 3, "options": undefined }],
+      "options": undefined,
+      "reservedRange": [],
+      "reservedName": [],
+    }],
+    "service": [{
+      "name": "PingService",
+      "method": [{
+        "name": "ping",
+        "inputType": ".simple.PingRequest",
+        "outputType": ".simple.PingResponse",
+        "options": undefined,
+        "clientStreaming": false,
+        "serverStreaming": false,
+      }],
+      "options": undefined,
+    }],
+    "extension": [],
+    "options": undefined,
+    "sourceCodeInfo": {
+      "location": [{
+        "path": [12],
+        "span": [2, 0, 18],
+        "leadingComments":
+          " Adding a comment to the syntax will become the first\n comment in the output source file.\n",
+        "trailingComments": "",
+        "leadingDetachedComments": [],
+      }, {
+        "path": [4, 0],
+        "span": [13, 0, 30, 1],
+        "leadingComments": "* Example comment on the Simple message ",
+        "trailingComments": "",
+        "leadingDetachedComments": [
+          " This comment is seperated by a blank non-comment line, and will detatch from \n the following comment on the message Simple.\n",
+        ],
+      }, {
+        "path": [4, 0, 2, 0],
+        "span": [15, 2, 18],
+        "leadingComments": " Name field\n",
+        "trailingComments": "",
+        "leadingDetachedComments": [],
+      }, {
+        "path": [4, 0, 2, 1],
+        "span": [17, 2, 16],
+        "leadingComments": " Age ",
+        "trailingComments": "",
+        "leadingDetachedComments": [],
+      }, {
+        "path": [4, 0, 2, 2],
+        "span": [18, 2, 43],
+        "leadingComments": "",
+        "trailingComments": " This comment will also attach\n",
+        "leadingDetachedComments": [],
+      }, {
+        "path": [4, 0, 2, 9],
+        "span": [26, 2, 27],
+        "leadingComments": " A thing (imported from thing)\n",
+        "trailingComments": "",
+        "leadingDetachedComments": [],
+      }, {
+        "path": [4, 2, 3, 0],
+        "span": [54, 2, 61, 3],
+        "leadingComments": " Comment for a nested message */\n",
+        "trailingComments": "",
+        "leadingDetachedComments": [],
+      }, {
+        "path": [4, 12],
+        "span": [133, 0, 144, 1],
+        "leadingComments": "* For testing proto3's field presence feature. ",
+        "trailingComments": "",
+        "leadingDetachedComments": [],
+      }, {
+        "path": [4, 12, 2, 0],
+        "span": [135, 2, 27],
+        "leadingComments": " Name field\n",
+        "trailingComments": "",
+        "leadingDetachedComments": [],
+      }, {
+        "path": [4, 12, 2, 1],
+        "span": [137, 2, 25],
+        "leadingComments": " Age ",
+        "trailingComments": "",
+        "leadingDetachedComments": [],
+      }, {
+        "path": [4, 12, 2, 2],
+        "span": [138, 2, 52],
+        "leadingComments": "",
+        "trailingComments": " This comment will also attach\n",
+        "leadingDetachedComments": [],
+      }, {
+        "path": [4, 12, 2, 5],
+        "span": [142, 2, 36],
+        "leadingComments": " A thing (imported from thing)\n",
+        "trailingComments": "",
+        "leadingDetachedComments": [],
+      }],
     },
-    syntax: 'proto3',
+    "syntax": "proto3",
   }),
   references: {
-    '.simple.StateEnum': StateEnum,
-    '.simple.Simple': Simple,
-    '.simple.Child': Child,
-    '.simple.Child.Type': Child_Type,
-    '.simple.Nested': Nested,
-    '.simple.Nested.InnerEnum': Nested_InnerEnum,
-    '.simple.Nested.InnerMessage': Nested_InnerMessage,
-    '.simple.Nested.InnerMessage.DeepMessage': Nested_InnerMessage_DeepMessage,
-    '.simple.OneOfMessage': OneOfMessage,
-    '.simple.SimpleWithWrappers': SimpleWithWrappers,
-    '.simple.Entity': Entity,
-    '.simple.SimpleWithMap': SimpleWithMap,
-    '.simple.SimpleWithMap.EntitiesByIdEntry': SimpleWithMap_EntitiesByIdEntry,
-    '.simple.SimpleWithMap.NameLookupEntry': SimpleWithMap_NameLookupEntry,
-    '.simple.SimpleWithMap.IntLookupEntry': SimpleWithMap_IntLookupEntry,
-    '.simple.SimpleWithMap.MapOfTimestampsEntry': SimpleWithMap_MapOfTimestampsEntry,
-    '.simple.SimpleWithMap.MapOfBytesEntry': SimpleWithMap_MapOfBytesEntry,
-    '.simple.SimpleWithSnakeCaseMap': SimpleWithSnakeCaseMap,
-    '.simple.SimpleWithSnakeCaseMap.EntitiesByIdEntry': SimpleWithSnakeCaseMap_EntitiesByIdEntry,
-    '.simple.SimpleWithMapOfEnums': SimpleWithMapOfEnums,
-    '.simple.SimpleWithMapOfEnums.EnumsByIdEntry': SimpleWithMapOfEnums_EnumsByIdEntry,
-    '.simple.PingRequest': PingRequest,
-    '.simple.PingResponse': PingResponse,
-    '.simple.Numbers': Numbers,
-    '.simple.SimpleButOptional': SimpleButOptional,
-    '.simple.Empty': Empty,
-    '.simple.PingService': PingServiceClientImpl,
+    ".simple.StateEnum": StateEnum,
+    ".simple.Simple": Simple,
+    ".simple.Child": Child,
+    ".simple.Child.Type": Child_Type,
+    ".simple.Nested": Nested,
+    ".simple.Nested.InnerEnum": Nested_InnerEnum,
+    ".simple.Nested.InnerMessage": Nested_InnerMessage,
+    ".simple.Nested.InnerMessage.DeepMessage": Nested_InnerMessage_DeepMessage,
+    ".simple.OneOfMessage": OneOfMessage,
+    ".simple.SimpleWithWrappers": SimpleWithWrappers,
+    ".simple.Entity": Entity,
+    ".simple.SimpleWithMap": SimpleWithMap,
+    ".simple.SimpleWithMap.EntitiesByIdEntry": SimpleWithMap_EntitiesByIdEntry,
+    ".simple.SimpleWithMap.NameLookupEntry": SimpleWithMap_NameLookupEntry,
+    ".simple.SimpleWithMap.IntLookupEntry": SimpleWithMap_IntLookupEntry,
+    ".simple.SimpleWithMap.MapOfTimestampsEntry": SimpleWithMap_MapOfTimestampsEntry,
+    ".simple.SimpleWithMap.MapOfBytesEntry": SimpleWithMap_MapOfBytesEntry,
+    ".simple.SimpleWithSnakeCaseMap": SimpleWithSnakeCaseMap,
+    ".simple.SimpleWithSnakeCaseMap.EntitiesByIdEntry": SimpleWithSnakeCaseMap_EntitiesByIdEntry,
+    ".simple.SimpleWithMapOfEnums": SimpleWithMapOfEnums,
+    ".simple.SimpleWithMapOfEnums.EnumsByIdEntry": SimpleWithMapOfEnums_EnumsByIdEntry,
+    ".simple.PingRequest": PingRequest,
+    ".simple.PingResponse": PingResponse,
+    ".simple.Numbers": Numbers,
+    ".simple.SimpleButOptional": SimpleButOptional,
+    ".simple.Empty": Empty,
+    ".simple.PingService": PingServiceClientImpl,
   },
   dependencies: [protoMetadata1, protoMetadata2, protoMetadata3, protoMetadata4],
 };
@@ -1940,11 +2640,19 @@ declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
 var globalThis: any = (() => {
-  if (typeof globalThis !== 'undefined') return globalThis;
-  if (typeof self !== 'undefined') return self;
-  if (typeof window !== 'undefined') return window;
-  if (typeof global !== 'undefined') return global;
-  throw 'Unable to locate global object';
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
 })();
 
 function toTimestamp(date: Date): Timestamp {
@@ -1961,14 +2669,14 @@ function fromTimestamp(t: Timestamp): Date {
 
 function longToNumber(long: Long): number {
   if (long.gt(Number.MAX_SAFE_INTEGER)) {
-    throw new globalThis.Error('Value is larger than Number.MAX_SAFE_INTEGER');
+    throw new globalThis.Error("Value is larger than Number.MAX_SAFE_INTEGER");
   }
   return long.toNumber();
 }
 
 // If you get a compile-error about 'Constructor<Long> and ... have no overlap',
 // add '--ts_proto_opt=esModuleInterop=true' as a flag when calling 'protoc'.
-if (util.Long !== Long) {
-  util.Long = Long as any;
-  configure();
+if (_m0.util.Long !== Long) {
+  _m0.util.Long = Long as any;
+  _m0.configure();
 }

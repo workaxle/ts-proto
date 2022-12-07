@@ -1,16 +1,16 @@
-import { Code, code, def, joinCode } from 'ts-poet';
+import { Code, code, def, joinCode } from "ts-poet";
 import {
   FileDescriptorProto,
   MethodDescriptorProto,
   MethodOptions,
   MethodOptions_IdempotencyLevel,
   ServiceDescriptorProto,
-} from 'ts-proto-descriptors';
-import { camelCase } from './case';
-import { Context } from './context';
-import SourceInfo, { Fields } from './sourceInfo';
-import { messageToTypeName } from './types';
-import { maybeAddComment, maybePrefixPackage } from './utils';
+} from "ts-proto-descriptors";
+import { camelCase } from "./case";
+import { Context } from "./context";
+import SourceInfo, { Fields } from "./sourceInfo";
+import { messageToTypeName } from "./types";
+import { maybeAddComment, maybePrefixPackage } from "./utils";
 
 /**
  * Generates a framework-agnostic service descriptor.
@@ -25,9 +25,15 @@ export function generateGenericServiceDefinition(
 
   maybeAddComment(sourceInfo, chunks, serviceDesc.options?.deprecated);
 
+  // Service definition type
+  const name = def(`${serviceDesc.name}Definition`);
+  chunks.push(code`
+    export type ${name} = typeof ${name};
+  `);
+
   // Service definition
   chunks.push(code`
-    export const ${def(`${serviceDesc.name}Definition`)} = {
+    export const ${name} = {
   `);
 
   serviceDesc.options?.uninterpretedOption;
@@ -51,7 +57,7 @@ export function generateGenericServiceDefinition(
     } as const;
   `);
 
-  return joinCode(chunks, { on: '\n' });
+  return joinCode(chunks, { on: "\n" });
 }
 
 function generateMethodDefinition(ctx: Context, methodDesc: MethodDescriptorProto) {
@@ -85,5 +91,5 @@ function generateMethodOptions(options: MethodOptions | undefined) {
 
   chunks.push(code`}`);
 
-  return joinCode(chunks, { on: '\n' });
+  return joinCode(chunks, { on: "\n" });
 }

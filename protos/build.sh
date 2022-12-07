@@ -6,15 +6,11 @@
 protoc \
   --plugin=./node_modules/ts-proto/protoc-gen-ts_proto \
   --ts_proto_out=. \
-  --ts_proto_opt=exportCommonSymbols=false \
+  --ts_proto_opt=exportCommonSymbols=false,unknownFields=true,usePrototypeForDefaults=true \
   ./google/protobuf/descriptor.proto \
   ./google/protobuf/compiler/plugin.proto
 
-./node_modules/.bin/tsc \
-  ./index.ts \
-  ./google/protobuf/descriptor.ts \
-  ./google/protobuf/compiler/plugin.ts \
-  --outDir dist --declaration
+./node_modules/.bin/tsc -p tsconfig.json
 
 
 

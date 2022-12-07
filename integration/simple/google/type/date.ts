@@ -1,8 +1,7 @@
 /* eslint-disable */
-import { util, configure, Writer, Reader } from 'protobufjs/minimal';
-import * as Long from 'long';
+import * as _m0 from "protobufjs/minimal";
 
-export const protobufPackage = 'google.type';
+export const protobufPackage = "google.type";
 
 /**
  * Represents a whole or partial calendar date, e.g. a birthday. The time of day
@@ -40,7 +39,7 @@ function createBaseDateMessage(): DateMessage {
 }
 
 export const DateMessage = {
-  encode(message: DateMessage, writer: Writer = Writer.create()): Writer {
+  encode(message: DateMessage, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.year !== 0) {
       writer.uint32(8).int32(message.year);
     }
@@ -53,8 +52,8 @@ export const DateMessage = {
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): DateMessage {
-    const reader = input instanceof Reader ? input : new Reader(input);
+  decode(input: _m0.Reader | Uint8Array, length?: number): DateMessage {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseDateMessage();
     while (reader.pos < end) {
@@ -104,27 +103,14 @@ export const DateMessage = {
 
 type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
-export type DeepPartial<T> = T extends Builtin
-  ? T
-  : T extends Array<infer U>
-  ? Array<DeepPartial<U>>
-  : T extends ReadonlyArray<infer U>
-  ? ReadonlyArray<DeepPartial<U>>
-  : T extends {}
-  ? { [K in keyof T]?: DeepPartial<T[K]> }
+export type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
 
 type KeysOfUnion<T> = T extends T ? keyof T : never;
-export type Exact<P, I extends P> = P extends Builtin
-  ? P
-  : P & { [K in keyof P]: Exact<P[K], I[K]> } & Record<Exclude<keyof I, KeysOfUnion<P>>, never>;
-
-// If you get a compile-error about 'Constructor<Long> and ... have no overlap',
-// add '--ts_proto_opt=esModuleInterop=true' as a flag when calling 'protoc'.
-if (util.Long !== Long) {
-  util.Long = Long as any;
-  configure();
-}
+export type Exact<P, I extends P> = P extends Builtin ? P
+  : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P>>]: never };
 
 function isSet(value: any): boolean {
   return value !== null && value !== undefined;
