@@ -20,6 +20,12 @@ export enum EnvOption {
   BOTH = "both",
 }
 
+export enum RemoveEnumPrefixOption {
+  ALL = 'all',
+  MEMBERS = 'members',
+  NONE = 'none',
+}
+
 export enum OneofOption {
   PROPERTIES = "properties",
   UNIONS = "unions",
@@ -50,6 +56,7 @@ export type Options = {
   outputTypeRegistry: boolean;
   stringEnums: boolean;
   constEnums: boolean;
+  removeEnumPrefix: RemoveEnumPrefixOption;
   enumsAsLiterals: boolean;
   outputClientImpl: boolean | "grpc-web";
   outputServices: ServiceOption[];
@@ -97,6 +104,7 @@ export function defaultOptions(): Options {
     outputTypeRegistry: false,
     stringEnums: false,
     constEnums: false,
+    removeEnumPrefix: RemoveEnumPrefixOption.NONE,
     enumsAsLiterals: false,
     outputClientImpl: true,
     outputServices: [],
