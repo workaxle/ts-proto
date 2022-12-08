@@ -261,7 +261,7 @@ export function notDefaultCheck(
       if (options.stringEnums) {
         const enumType = messageToTypeName(ctx, field.typeName);
         const zerothValueName = removeEnumPrefix(zerothValue.name, `${enumType}`);
-        return code`${maybeNotUndefinedAnd} ${place} !== ${enumType}.${zerothValueName}`;
+        return code`${maybeNotUndefinedAnd} ${place} !== ${enumType}.${zerothValueName}.test`;
       } else {
         return code`${maybeNotUndefinedAnd} ${place} !== ${zerothValue.number}`;
       }
