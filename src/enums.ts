@@ -194,14 +194,18 @@ export function generateEnumToNumber(ctx: Context, fullName: string, enumDesc: E
 
 function getMemberName(ctx: Context, fullName: string, valueDesc: EnumValueDescriptorProto): string {
   if ([RemoveEnumPrefixOption.ALL, RemoveEnumPrefixOption.MEMBERS].includes(ctx.options.removeEnumPrefix)) {
-    return valueDesc.name.replace(`${camelToSnake(fullName)}_`, '');
+    return removeEnumPrefix(valueDesc.name, fullName)
   }
   return valueDesc.name;
 }
 
 function getValueName(ctx: Context, fullName: string, valueDesc: EnumValueDescriptorProto): string {
   if (ctx.options.removeEnumPrefix === RemoveEnumPrefixOption.ALL) {
-    return valueDesc.name.replace(`${camelToSnake(fullName)}_`, '');
+    return removeEnumPrefix(valueDesc.name, fullName)
   }
   return valueDesc.name;
+}
+
+export function removeEnumPrefix(enumName: string, fullName: string) {
+  return enumName.replace(`${camelToSnake(fullName)}_`, '');
 }

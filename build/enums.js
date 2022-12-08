@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.generateEnumToNumber = exports.generateEnumToJson = exports.generateEnumFromJson = exports.generateEnum = void 0;
+exports.removeEnumPrefix = exports.generateEnumToNumber = exports.generateEnumToJson = exports.generateEnumFromJson = exports.generateEnum = void 0;
 const ts_poet_1 = require("ts-poet");
 const utils_1 = require("./utils");
 const case_1 = require("./case");
@@ -167,13 +167,17 @@ function generateEnumToNumber(ctx, fullName, enumDesc) {
 exports.generateEnumToNumber = generateEnumToNumber;
 function getMemberName(ctx, fullName, valueDesc) {
     if ([options_1.RemoveEnumPrefixOption.ALL, options_1.RemoveEnumPrefixOption.MEMBERS].includes(ctx.options.removeEnumPrefix)) {
-        return valueDesc.name.replace(`${(0, case_1.camelToSnake)(fullName)}_`, '');
+        return removeEnumPrefix(valueDesc.name, fullName);
     }
     return valueDesc.name;
 }
 function getValueName(ctx, fullName, valueDesc) {
     if (ctx.options.removeEnumPrefix === options_1.RemoveEnumPrefixOption.ALL) {
-        return valueDesc.name.replace(`${(0, case_1.camelToSnake)(fullName)}_`, '');
+        return removeEnumPrefix(valueDesc.name, fullName);
     }
     return valueDesc.name;
 }
+function removeEnumPrefix(enumName, fullName) {
+    return enumName.replace(`${(0, case_1.camelToSnake)(fullName)}_`, '');
+}
+exports.removeEnumPrefix = removeEnumPrefix;

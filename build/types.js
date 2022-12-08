@@ -8,6 +8,7 @@ const visit_1 = require("./visit");
 const utils_1 = require("./utils");
 const sourceInfo_1 = require("./sourceInfo");
 const case_1 = require("./case");
+const enums_1 = require("./enums");
 /** Based on https://github.com/dcodeIO/protobuf.js/blob/master/src/types.js#L37. */
 function basicWireType(type) {
     switch (type) {
@@ -247,7 +248,8 @@ function notDefaultCheck(ctx, field, messageOptions, place) {
             const zerothValue = enumProto.value.find((v) => v.number === 0) || enumProto.value[0];
             if (options.stringEnums) {
                 const enumType = messageToTypeName(ctx, field.typeName);
-                return (0, ts_poet_1.code) `${maybeNotUndefinedAnd} ${place} !== ${enumType}.${zerothValue.name}`;
+                const zerothValueName = (0, enums_1.removeEnumPrefix)(zerothValue.name, enumType.toString());
+                return (0, ts_poet_1.code) `${maybeNotUndefinedAnd} ${place} !== ${enumType}.${zerothValueName}`;
             }
             else {
                 return (0, ts_poet_1.code) `${maybeNotUndefinedAnd} ${place} !== ${zerothValue.number}`;

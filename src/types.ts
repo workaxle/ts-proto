@@ -17,6 +17,7 @@ import { fail, FormattedMethodDescriptor, impProto, maybePrefixPackage } from ".
 import SourceInfo from "./sourceInfo";
 import { camelCase } from "./case";
 import { Context } from "./context";
+import { removeEnumPrefix } from "./enums";
 
 /** Based on https://github.com/dcodeIO/protobuf.js/blob/master/src/types.js#L37. */
 export function basicWireType(type: FieldDescriptorProto_Type): number {
@@ -259,7 +260,8 @@ export function notDefaultCheck(
       const zerothValue = enumProto.value.find((v) => v.number === 0) || enumProto.value[0];
       if (options.stringEnums) {
         const enumType = messageToTypeName(ctx, field.typeName);
-        return code`${maybeNotUndefinedAnd} ${place} !== ${enumType}.${zerothValue.name}`;
+        const zerothValueName = removeEnumPrefix(zerothValue.name, enumType.toString());
+        return code`${maybeNotUndefinedAnd} ${place} !== ${enumType}.${zerothValueName}`;
       } else {
         return code`${maybeNotUndefinedAnd} ${place} !== ${zerothValue.number}`;
       }
