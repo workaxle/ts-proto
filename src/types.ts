@@ -193,7 +193,10 @@ export function defaultValue(ctx: Context, field: FieldDescriptorProto): any {
       const zerothValue = enumProto.value.find((v) => v.number === 0) || enumProto.value[0];
       if (options.stringEnums) {
         const enumType = messageToTypeName(ctx, field.typeName);
-        return code`${enumType}.${zerothValue.name}`;
+        const zerothValueName = ctx.options.removeEnumPrefix
+         ? removeEnumPrefix(zerothValue.name, enumProto.name)
+         : zerothValue.name;
+        return code`${enumType}.${zerothValueName}`;
       } else {
         return zerothValue.number;
       }
@@ -260,7 +263,9 @@ export function notDefaultCheck(
       const zerothValue = enumProto.value.find((v) => v.number === 0) || enumProto.value[0];
       if (options.stringEnums) {
         const enumType = messageToTypeName(ctx, field.typeName);
-        const zerothValueName = removeEnumPrefix(zerothValue.name, enumProto.name);
+        const zerothValueName = ctx.options.removeEnumPrefix
+         ? removeEnumPrefix(zerothValue.name, enumProto.name)
+         : zerothValue.name;
         return code`${maybeNotUndefinedAnd} ${place} !== ${enumType}.${zerothValueName}`;
       } else {
         return code`${maybeNotUndefinedAnd} ${place} !== ${zerothValue.number}`;

@@ -248,7 +248,7 @@ function notDefaultCheck(ctx, field, messageOptions, place) {
             const zerothValue = enumProto.value.find((v) => v.number === 0) || enumProto.value[0];
             if (options.stringEnums) {
                 const enumType = messageToTypeName(ctx, field.typeName);
-                const zerothValueName = (0, enums_1.removeEnumPrefix)(zerothValue.name, enumType.toString());
+                const zerothValueName = (0, enums_1.removeEnumPrefix)(zerothValue.name, enumProto.name);
                 return (0, ts_poet_1.code) `${maybeNotUndefinedAnd} ${place} !== ${enumType}.${zerothValueName}`;
             }
             else {
