@@ -260,7 +260,7 @@ export function notDefaultCheck(
       const zerothValue = enumProto.value.find((v) => v.number === 0) || enumProto.value[0];
       if (options.stringEnums) {
         const enumType = messageToTypeName(ctx, field.typeName);
-        const zerothValueName = removeEnumPrefix(zerothValue.name, enumType.toString());
+        const zerothValueName = removeEnumPrefix(zerothValue.name, `${enumType}`);
         return code`${maybeNotUndefinedAnd} ${place} !== ${enumType}.${zerothValueName}`;
       } else {
         return code`${maybeNotUndefinedAnd} ${place} !== ${zerothValue.number}`;
