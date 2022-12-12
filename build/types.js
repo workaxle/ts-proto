@@ -180,7 +180,10 @@ function defaultValue(ctx, field) {
             const zerothValue = enumProto.value.find((v) => v.number === 0) || enumProto.value[0];
             if (options.stringEnums) {
                 const enumType = messageToTypeName(ctx, field.typeName);
-                return (0, ts_poet_1.code) `${enumType}.${zerothValue.name}`;
+                const zerothValueName = ctx.options.removeEnumPrefix
+                    ? (0, enums_1.removeEnumPrefix)(zerothValue.name, enumProto.name)
+                    : zerothValue.name;
+                return (0, ts_poet_1.code) `${enumType}.${zerothValueName}`;
             }
             else {
                 return zerothValue.number;
@@ -248,7 +251,9 @@ function notDefaultCheck(ctx, field, messageOptions, place) {
             const zerothValue = enumProto.value.find((v) => v.number === 0) || enumProto.value[0];
             if (options.stringEnums) {
                 const enumType = messageToTypeName(ctx, field.typeName);
-                const zerothValueName = (0, enums_1.removeEnumPrefix)(zerothValue.name, enumProto.name);
+                const zerothValueName = ctx.options.removeEnumPrefix
+                    ? (0, enums_1.removeEnumPrefix)(zerothValue.name, enumProto.name)
+                    : zerothValue.name;
                 return (0, ts_poet_1.code) `${maybeNotUndefinedAnd} ${place} !== ${enumType}.${zerothValueName}`;
             }
             else {
