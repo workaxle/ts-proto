@@ -25,7 +25,7 @@ function generateEnum(ctx, fullName, enumDesc, sourceInfo) {
         var _a;
         const info = sourceInfo.lookup(sourceInfo_1.Fields.enum.value, index);
         const valueName = getValueName(ctx, fullName, valueDesc);
-        const memberName = getMemberName(ctx, fullName, valueDesc);
+        const memberName = getMemberName(ctx, enumDesc.name, valueDesc);
         (0, utils_1.maybeAddComment)(info, chunks, (_a = valueDesc.options) === null || _a === void 0 ? void 0 : _a.deprecated, `${memberName} - `);
         chunks.push((0, ts_poet_1.code) `${memberName} ${delimiter} ${options.stringEnums ? `"${valueName}"` : valueDesc.number.toString()},`);
     });
@@ -63,7 +63,7 @@ function generateEnumFromJson(ctx, fullName, enumDesc) {
     chunks.push((0, ts_poet_1.code) `export function ${(0, ts_poet_1.def)(functionName)}(object: any): ${fullName} {`);
     chunks.push((0, ts_poet_1.code) `switch (object) {`);
     for (const valueDesc of enumDesc.value) {
-        const memberName = getMemberName(ctx, fullName, valueDesc);
+        const memberName = getMemberName(ctx, enumDesc.name, valueDesc);
         const valueName = getValueName(ctx, fullName, valueDesc);
         chunks.push((0, ts_poet_1.code) `
       case ${valueDesc.number}:
@@ -103,7 +103,7 @@ function generateEnumToJson(ctx, fullName, enumDesc) {
             chunks.push((0, ts_poet_1.code) `case ${fullName}.${valueDesc.name}: return ${valueDesc.number};`);
         }
         else {
-            const memberName = getMemberName(ctx, fullName, valueDesc);
+            const memberName = getMemberName(ctx, enumDesc.name, valueDesc);
             const valueName = getValueName(ctx, fullName, valueDesc);
             chunks.push((0, ts_poet_1.code) `case ${fullName}.${memberName}: return "${valueName}";`);
         }
@@ -144,7 +144,7 @@ function generateEnumToNumber(ctx, fullName, enumDesc) {
     chunks.push((0, ts_poet_1.code) `export function ${(0, ts_poet_1.def)(functionName)}(object: ${fullName}): number {`);
     chunks.push((0, ts_poet_1.code) `switch (object) {`);
     for (const valueDesc of enumDesc.value) {
-        chunks.push((0, ts_poet_1.code) `case ${fullName}.${getMemberName(ctx, fullName, valueDesc)}: return ${valueDesc.number};`);
+        chunks.push((0, ts_poet_1.code) `case ${fullName}.${getMemberName(ctx, enumDesc.name, valueDesc)}: return ${valueDesc.number};`);
     }
     if (options.unrecognizedEnum) {
         chunks.push((0, ts_poet_1.code) `
